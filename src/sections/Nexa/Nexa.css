@@ -1,0 +1,568 @@
+.nexa {
+  --n-cyan: #56d8f5;
+  --n-blue: #5a6cf2;
+  --n-violet: #8b4ff0;
+  --n-violet-soft: #a78bfa;
+  --n-grad: linear-gradient(90deg, var(--n-cyan), var(--n-blue) 50%, var(--n-violet));
+  position: relative;
+  overflow: clip;
+}
+
+.nexa .mono {
+  font-family: var(--font-mono);
+}
+
+/* ---------- Escena fija ---------- */
+.nexa__stage {
+  position: relative;
+  height: 320vh;
+}
+
+.nexa__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.nexa__orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.nexa__orb--1 {
+  width: 60vmax;
+  height: 60vmax;
+  right: -22vmax;
+  top: -18vmax;
+  background: radial-gradient(circle at 30% 70%, rgb(40 40 160 / 0.45), rgb(20 20 90 / 0.15) 60%, transparent 70%);
+}
+
+.nexa__orb--2 {
+  width: 48vmax;
+  height: 48vmax;
+  left: -20vmax;
+  bottom: -20vmax;
+  background: radial-gradient(circle at 70% 30%, rgb(70 40 170 / 0.4), rgb(40 20 110 / 0.12) 60%, transparent 70%);
+}
+
+.nexa__orb--3 {
+  width: 30vmax;
+  height: 30vmax;
+  left: 30%;
+  top: -22vmax;
+  background: radial-gradient(circle, rgb(120 40 160 / 0.25), transparent 70%);
+}
+
+.nexa__stage-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(24px, 4vh, 48px);
+}
+
+.nexa__kicker {
+  margin: 0;
+  font-size: 12px;
+  color: var(--n-violet-soft);
+}
+
+.nexa__combo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 44px);
+}
+
+.nexa__combo-glow {
+  position: absolute;
+  inset: -40% -20%;
+  background: radial-gradient(closest-side at 30% 50%, rgb(244 88 10 / 0.35), transparent),
+    radial-gradient(closest-side at 72% 50%, rgb(110 80 255 / 0.4), transparent);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.nexa__bew {
+  font-size: clamp(56px, 10vw, 150px);
+  color: var(--orange);
+}
+
+.nexa__plus {
+  display: grid;
+  place-items: center;
+  width: clamp(44px, 6vw, 80px);
+  height: clamp(44px, 6vw, 80px);
+  border-radius: 50%;
+  border: 1.5px solid rgb(243 242 255 / 0.4);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.nexa__brand {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 16px);
+}
+
+.nexa__mark {
+  width: clamp(64px, 9vw, 130px);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 0 24px rgb(110 90 255 / 0.5));
+}
+
+.nexa__word {
+  font-family: "Montserrat", var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 100px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.nexa__ai,
+.nexa__grad {
+  background: var(--n-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nexa__stack {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: clamp(24px, 3.4vw, 48px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.nexa__line {
+  display: block;
+}
+
+.nexa__grad {
+  font-weight: 600;
+}
+
+.nexa__line--result {
+  font-weight: 600;
+  color: #fff;
+}
+
+.nexa__hint {
+  position: absolute;
+  bottom: -18vh;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ---------- Contenido ---------- */
+.nexa__content {
+  position: relative;
+  padding-top: clamp(40px, 8vw, 100px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+  font-family: "Montserrat", var(--font-sans);
+}
+
+.nexa__dash {
+  display: block;
+  width: min(240px, 50%);
+  height: 2px;
+  margin: 0 auto 56px;
+  background: repeating-linear-gradient(90deg, var(--n-blue) 0 6px, transparent 6px 10px);
+  mask: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+}
+
+.nexa__intro {
+  margin: 0 auto;
+  max-width: 22ch;
+  text-align: center;
+  font-size: clamp(30px, 4.2vw, 60px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.nexa__u {
+  position: relative;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.nexa__u::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.04em;
+  height: 0.08em;
+  border-radius: 4px;
+  background: var(--n-grad);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s 0.5s var(--ease);
+}
+
+.nexa__intro.is-seen .nexa__u::after {
+  transform: scaleX(1);
+}
+
+.nexa__pitch {
+  margin: 28px auto 0;
+  max-width: 40ch;
+  text-align: center;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+/* Beneficios */
+.nexa__benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: clamp(56px, 8vw, 110px);
+}
+
+.nexa__benefit {
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  padding: 28px;
+  border-radius: 22px;
+  background: radial-gradient(400px circle at var(--mx) var(--my), rgb(110 90 255 / 0.16), transparent 50%),
+    rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(140 130 255 / 0.16);
+  transition: border-color 0.4s, transform 0.5s var(--ease);
+}
+
+.nexa__benefit:hover {
+  border-color: rgb(140 130 255 / 0.5);
+  transform: translateY(-6px);
+}
+
+.nexa__benefit-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--n-grad);
+  color: #fff;
+  box-shadow: 0 12px 30px -10px rgb(110 90 255 / 0.7);
+}
+
+.nexa__benefit-icon svg {
+  width: 26px;
+}
+
+.nexa__icon-cross {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.nexa__benefit:hover .nexa__icon-cross {
+  opacity: 1;
+}
+
+.nexa__icon-hand {
+  transform-origin: 12px 13px;
+}
+
+.nexa__benefit:hover .nexa__icon-hand {
+  animation: spinHand 1.2s linear infinite;
+}
+
+@keyframes spinHand {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nexa__icon-trend {
+  stroke-dasharray: 20;
+}
+
+.nexa__benefit:hover .nexa__icon-trend {
+  animation: trend 0.9s var(--ease);
+}
+
+@keyframes trend {
+  from {
+    stroke-dashoffset: 20;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.nexa__benefit-num {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.nexa__benefit h3 {
+  margin: 26px 0 10px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.nexa__benefit p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.65;
+}
+
+/* Casos de uso */
+.nexa__cases {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+  margin-top: clamp(80px, 12vw, 160px);
+}
+
+.nexa__cases-title {
+  margin: 0 0 40px;
+  font-size: clamp(32px, 3.8vw, 54px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.nexa__violet {
+  color: var(--n-violet-soft);
+  font-weight: 700;
+}
+
+.nexa__orange {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.nexa__tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.nexa__tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 0 18px 22px;
+  text-align: left;
+  border-bottom: 1px solid rgb(140 130 255 / 0.14);
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.nexa__tab:hover,
+.nexa__tab.is-active {
+  opacity: 1;
+}
+
+.nexa__tab-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.nexa__tab-head .mono {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.nexa__tab-head strong {
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 700;
+  color: var(--n-violet-soft);
+}
+
+.nexa__tab-body {
+  display: block;
+  overflow: hidden;
+}
+
+.nexa__tab-body > span {
+  display: block;
+  padding: 10px 0 0 30px;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.5;
+}
+
+.nexa__tab-body .nexa__violet {
+  font-weight: 500;
+}
+
+.nexa__tab-bar {
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--n-grad);
+}
+
+.nexa__demo-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.nexa__live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--n-violet);
+  box-shadow: 0 0 0 0 rgb(139 79 240 / 0.6);
+  animation: livePulse 1.8s infinite;
+}
+
+@keyframes livePulse {
+  70% {
+    box-shadow: 0 0 0 10px rgb(139 79 240 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(139 79 240 / 0);
+  }
+}
+
+.nexa__demo-foot {
+  margin: 14px 0 0;
+  font-size: 11px;
+  opacity: 0.8;
+  text-align: right;
+}
+
+/* CTA */
+.nexa__cta {
+  margin-top: clamp(80px, 12vw, 150px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
+}
+
+.nexa__cta .nexa__dash {
+  margin-bottom: 0;
+}
+
+.nexa__cta-text {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.nexa__cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 34px;
+  border-radius: 999px;
+  font-family: "Montserrat", var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--n-grad);
+  background-size: 200% 100%;
+  box-shadow: 0 20px 50px -16px rgb(110 90 255 / 0.8);
+  transition: background-position 0.6s var(--ease), box-shadow 0.4s;
+}
+
+.nexa__cta-btn:hover {
+  background-position: 100% 0;
+  box-shadow: 0 24px 60px -12px rgb(110 90 255 / 1);
+}
+
+.nexa__cta-mark {
+  width: 44px;
+}
+
+@media (max-width: 900px) {
+  .nexa__benefits,
+  .nexa__cases {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .nexa__combo {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nexa__stage {
+    height: 280vh;
+  }
+}
+
+/* ---------- Salida: transición suave al naranja de Contacto ---------- */
+.nexa__outro {
+  position: relative;
+  height: 48vh;
+  min-height: 320px;
+  margin-top: -1px;
+  overflow: hidden;
+  display: grid;
+  place-items: end center;
+  padding-bottom: 7vh;
+  /* Muchas paradas para evitar bandas y que el cambio sea gradual */
+  background: linear-gradient(
+    180deg,
+    rgb(5 5 12 / 0) 0%,
+    #0b0716 12%,
+    #1a0b1c 26%,
+    #34101a 40%,
+    #5a1a12 54%,
+    #8a2c0c 67%,
+    #c0420a 80%,
+    #e2500a 90%,
+    var(--orange) 100%
+  );
+}
+
+.nexa__outro-glow {
+  position: absolute;
+  inset: 25% -25% 18% -25%;
+  background: radial-gradient(closest-side, rgb(255 140 70 / 0.55), rgb(244 88 10 / 0.25) 55%, transparent);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.nexa__outro-text {
+  position: relative;
+  margin: 0;
+  font-size: clamp(14px, 1.4vw, 18px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+}

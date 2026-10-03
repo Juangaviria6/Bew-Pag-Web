@@ -1,0 +1,13 @@
+.services__note {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  text-align: right;
+}
+
+@media (hover: none) {
+  .services__note {
+    display: none;
+  }
+}

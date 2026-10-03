@@ -1,0 +1,14 @@
+.work .section-title {
+  font-weight: 300;
+}
+
+.work__strong {
+  font-weight: 600;
+}
+
+.work__note {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
