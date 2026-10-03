@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { brand, legal, projectTypes } from "../../data/content";
 import { Magnetic } from "../../components/ui/Magnetic/Magnetic";
 import { PrivacyModal } from "./PrivacyModal";
+import { trackEvent } from "../../lib/analytics";
 import { PHONE_CHARS_RE, normalizePhone, validate, type FieldName } from "./validation";
 import "./Contact.css";
 
@@ -97,6 +98,7 @@ export function Contact({ type, onTypeChange: setType }: ContactProps) {
         }),
       });
       if (!res.ok) throw new Error(String(res.status));
+      trackEvent("generate_lead", { project_type: type });
       setStatus("sent");
     } catch {
       setError("No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos por email.");

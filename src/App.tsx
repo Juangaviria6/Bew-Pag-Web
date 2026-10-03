@@ -21,6 +21,7 @@ import { marqueeWords, projectTypes } from "./data/content";
 import { useFinePointer, useReducedMotion } from "./hooks/useMediaQuery";
 import { scrollToHash, useSmoothScroll } from "./hooks/useSmoothScroll";
 import type { Plan, Service } from "./types";
+import { trackEvent } from "./lib/analytics";
 
 const SERVICE_TO_TYPE: Record<string, string> = {
   landing: "Landing page",
@@ -49,11 +50,13 @@ export default function App() {
   };
 
   const quotePlan = (plan: Plan) => {
+    trackEvent("select_plan", { plan_id: plan.id, plan_name: plan.name });
     setProjectType(plan.projectType);
     scrollToHash("#contacto");
   };
 
   const quoteExtra = (service: Service) => {
+    trackEvent("select_extra_service", { service_id: service.id });
     setProjectType(EXTRA_TO_TYPE[service.id] ?? "Otro");
     scrollToHash("#contacto");
   };

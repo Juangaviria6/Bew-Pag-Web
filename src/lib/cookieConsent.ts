@@ -5,7 +5,7 @@
  * y escuchar el evento `CONSENT_EVENT` para reaccionar a cambios.
  */
 
-export const COOKIE_POLICY_VERSION = "1.0";
+export const COOKIE_POLICY_VERSION = "1.1";
 const STORAGE_KEY = "bew_cookie_consent";
 /** Meses tras los cuales se vuelve a pedir el consentimiento. */
 const CONSENT_TTL_MONTHS = 12;

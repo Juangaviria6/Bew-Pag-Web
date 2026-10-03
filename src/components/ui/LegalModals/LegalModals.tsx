@@ -180,14 +180,33 @@ export function CookiePolicyModal({ onClose }: { onClose: () => void }) {
           <span role="cell">Recordar tu elección sobre cookies</span>
           <span role="cell">12 meses</span>
         </div>
+        <div role="row">
+          <span role="cell" className="mono">_ga</span>
+          <span role="cell">Analítica (Google Analytics 4)</span>
+          <span role="cell">Distinguir visitantes de forma anónima</span>
+          <span role="cell">2 años</span>
+        </div>
+        <div role="row">
+          <span role="cell" className="mono">_ga_&lt;ID&gt;</span>
+          <span role="cell">Analítica (Google Analytics 4)</span>
+          <span role="cell">Mantener el estado de la sesión</span>
+          <span role="cell">2 años</span>
+        </div>
       </div>
       <p>
-        Hoy <strong>no usamos cookies analíticas ni de marketing</strong>. Si las incorporamos, solo se activarán si
-        las autorizas en el panel de preferencias y actualizaremos esta tabla.
+        Las cookies analíticas <strong>solo se instalan si las aceptas</strong>. Mientras no lo hagas, Google Analytics
+        funciona en modo de consentimiento denegado y no guarda cookies en tu navegador. Hoy no usamos cookies de
+        marketing; si las incorporamos, también requerirán tu autorización y actualizaremos esta tabla.
       </p>
 
       <h4>4. Servicios de terceros</h4>
       <ul>
+        <li>
+          <strong>Google Tag Manager y Google Analytics 4 (Google LLC):</strong> gestionamos y medimos el uso del sitio
+          (páginas vistas, interacciones y envíos del formulario, sin datos de contacto). Google puede procesar esta
+          información fuera de Colombia. Puedes instalar el complemento de inhabilitación de Google Analytics de tu
+          navegador.
+        </li>
         <li>
           <strong>Google Fonts:</strong> cargamos nuestras tipografías desde servidores de Google, que pueden registrar
           tu dirección IP. Consulta la política de privacidad de Google para más detalles.
