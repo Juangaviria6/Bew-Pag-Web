@@ -10,6 +10,8 @@ export interface StarInput {
   angle: number;
   /** Pellizco: pulgar e índice juntos. */
   pinch: boolean;
+  /** Apertura de la mano: 0 = puño, 1 = abierta (opcional). */
+  open?: number;
   visible: boolean;
 }
 

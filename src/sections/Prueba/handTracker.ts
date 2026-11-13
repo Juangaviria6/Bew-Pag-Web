@@ -52,7 +52,12 @@ export async function createHandTracker(): Promise<HandTracker> {
       // Histéresis: se activa bajo 0.35 y se suelta sobre 0.55.
       pinched = pinched ? ratio < 0.55 : ratio < 0.35;
       const [px, py] = (fit ?? ((x, y) => [x, y] as [number, number]))(1 - (palm.x + hand[8].x) / 2, (palm.y + hand[8].y) / 2);
+      // Apertura: distancia media de las puntas de los dedos a la muñeca, relativa a la palma.
+      const palmSize = dist(wrist, palm) || 0.001;
+      const reach = [8, 12, 16, 20].reduce((acc, i) => acc + dist(hand[i], wrist), 0) / 4 / palmSize;
+      const open = Math.min(1, Math.max(0, (reach - 1.05) / (1.9 - 1.05)));
       state = {
+        open,
         x: px, // espejo
         y: py,
         angle: Math.atan2(1 - palm.x - (1 - wrist.x), wrist.y - palm.y),
