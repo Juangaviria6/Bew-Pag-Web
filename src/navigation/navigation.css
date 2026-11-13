@@ -1,0 +1,208 @@
+/* ---------- Transición: seis barras en escalera ---------- */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.page-transition[data-active="true"] {
+  visibility: visible;
+  pointer-events: auto; /* mientras dura, bloquea clics a la página */
+}
+
+.page-transition__bar {
+  flex: 1 0 auto;
+  width: calc(100% / 6 + 1px);
+  margin-right: -1px;
+  background: var(--wine-bright);
+  transform: scaleY(0);
+  will-change: transform;
+}
+
+/* Movimiento reducido: un solo fundido */
+.page-transition[data-reduced="true"] {
+  background: var(--wine-bright);
+  opacity: 0;
+}
+
+.page-transition[data-reduced="true"] .page-transition__bar {
+  display: none;
+}
+
+/* ---------- Página ---------- */
+.page [tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Textos de cada página: entrada escalonada de abajo hacia arriba */
+@keyframes page-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+.page .section-head > * {
+  animation: page-rise 0.7s var(--ease) backwards;
+  animation-delay: calc(0.3s + var(--i, 0) * 0.08s);
+}
+
+.page .section-head > :nth-child(2) {
+  --i: 1;
+}
+
+.page .section-head > :nth-child(3) {
+  --i: 2;
+}
+
+/* Enlace "Siguiente" al final de cada página */
+.page-next {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: clamp(40px, 6vw, 72px) var(--gutter);
+  background: var(--wine-deep);
+  color: var(--cream-text);
+  transition: background 0.4s var(--ease);
+}
+
+.page-next:hover {
+  background: var(--wine-shadow);
+}
+
+.page-next .eyebrow {
+  color: var(--rose);
+}
+
+.page-next__title {
+  font-size: clamp(32px, 6vw, 84px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+/* ---------- Indicador de avance ---------- */
+.pager {
+  position: fixed;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.pager__dots {
+  position: fixed;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 8px 3px;
+  list-style: none;
+  border-radius: 999px;
+  background: rgb(247 232 235 / 0.82);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px -12px rgb(28 15 19 / 0.35);
+  pointer-events: auto;
+}
+
+.pager__dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.pager__dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--wine);
+  opacity: 0.35;
+  transition: transform 0.3s var(--ease), opacity 0.3s;
+}
+
+.pager__dot[aria-current="page"]::before {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.pager__dot::after {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 10px);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--wine);
+  color: var(--cream-text);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.25s, transform 0.25s var(--ease);
+  pointer-events: none;
+}
+
+.pager__dot:hover::after,
+.pager__dot:focus-visible::after {
+  opacity: 1;
+  transform: none;
+}
+
+.pager__count {
+  position: fixed;
+  right: 4px;
+  top: calc(50% - 150px);
+  width: 30px;
+  margin: 0;
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border-radius: 999px;
+  background: rgb(247 232 235 / 0.82);
+  backdrop-filter: blur(10px);
+  color: var(--wine);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.pager__count i {
+  width: 12px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+.pager__count span:last-child {
+  opacity: 0.6;
+}
+
+/* Celular: sin puntos laterales, solo el contador (abajo a la izquierda, sobre el contenido) */
+@media (max-width: 760px) {
+  .pager__dots {
+    display: none;
+  }
+
+  .pager__count {
+    top: auto;
+    bottom: 14px;
+    right: 8px;
+    width: auto;
+    padding: 6px 10px;
+    flex-direction: row;
+  }
+
+  .pager__count i {
+    width: 8px;
+  }
+}
