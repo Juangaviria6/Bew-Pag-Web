@@ -186,6 +186,11 @@
   opacity: 0;
 }
 
+/* Cámara trasera: sin espejo */
+.juego__stage.is-rear .juego__video {
+  transform: none;
+}
+
 .juego__stage.has-video .juego__video {
   opacity: 0.3;
 }

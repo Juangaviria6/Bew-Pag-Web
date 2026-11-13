@@ -21,9 +21,9 @@ export const LEVELS: Level[] = [
     goal: 5,
     unit: "círculos",
     intro:
-      "Nivel uno. Alcanzar. Va a aparecer un círculo. Lleve la mano hasta él y déjela quieta un momento, hasta que el anillo se llene. No hay prisa.",
+      "¡Hola! Qué bueno tenerle aquí. Empecemos suave. Va a aparecer un círculo: lleve la mano hasta él y déjela quietica un momento, hasta que se llene el anillo. Tranquilo, sin afán.",
     introTouch:
-      "Nivel uno. Alcanzar. Va a aparecer un círculo. Toque el círculo y mantenga el dedo encima hasta que el anillo se llene. No hay prisa.",
+      "¡Hola! Qué bueno tenerle aquí. Empecemos suave. Va a aparecer un círculo: tóquelo y deje el dedo encima un momento, hasta que se llene el anillo. Tranquilo, sin afán.",
   },
   {
     kind: "llevar",
@@ -31,9 +31,9 @@ export const LEVELS: Level[] = [
     goal: 4,
     unit: "objetos",
     intro:
-      "Nivel dos. Llevar. Ponga la mano sobre la estrella y espere a que la agarre. Luego llévela despacio hasta la canasta y quédese quieto para soltarla.",
+      "¡Vamos muy bien! Ahora vamos a llevar cosas. Ponga la mano sobre la estrella y espere a que la agarre. Después llévela despacito hasta la canasta y quédese ahí para soltarla.",
     introTouch:
-      "Nivel dos. Llevar. Mantenga el dedo sobre la estrella hasta agarrarla. Luego arrástrela despacio hasta la canasta y quédese quieto para soltarla.",
+      "¡Vamos muy bien! Ahora vamos a llevar cosas. Deje el dedo sobre la estrella hasta agarrarla. Después llévela despacito hasta la canasta y quédese ahí para soltarla.",
   },
   {
     kind: "seguir",
@@ -41,9 +41,9 @@ export const LEVELS: Level[] = [
     goal: 15,
     unit: "segundos",
     intro:
-      "Nivel tres. Seguir. Un círculo se va a mover despacio. Mantenga la mano dentro del círculo y acompáñelo. Si se sale, no pasa nada, solo vuelva.",
+      "¡Qué bien lo está haciendo! Ahora un círculo va a pasear despacio. Acompáñelo con la mano, como si bailaran juntos. Si se sale, no pasa nada, vuelva con calma.",
     introTouch:
-      "Nivel tres. Seguir. Un círculo se va a mover despacio. Mantenga el dedo dentro del círculo y acompáñelo. Si se sale, solo vuelva.",
+      "¡Qué bien lo está haciendo! Ahora un círculo va a pasear despacio. Acompáñelo con el dedo, como si bailaran juntos. Si se sale, no pasa nada, vuelva con calma.",
   },
   {
     kind: "abrir",
@@ -51,12 +51,25 @@ export const LEVELS: Level[] = [
     goal: 8,
     unit: "repeticiones",
     intro:
-      "Nivel cuatro. Abrir y cerrar. Muestre la mano a la cámara. Ábrala bien grande, estirando los dedos, y luego cierre el puño. Hágalo con calma y con movimientos amplios.",
+      "¡Último nivel, ya casi! Muéstrele la mano a la cámara. Ábrala bien grande, estirando todos los dedos, y luego cierre el puño. Movimientos grandes y con calma. ¡Usted puede!",
     introTouch:
-      "Nivel cuatro. Alternar. Toque el círculo de la izquierda y luego el de la derecha, uno a la vez, con movimientos amplios y tranquilos.",
+      "¡Último nivel, ya casi! Toque el círculo de la izquierda y luego el de la derecha, uno a la vez. Movimientos grandes y con calma. ¡Usted puede!",
   },
 ];
 
-export const PRAISE = ["¡Muy bien!", "¡Excelente!", "¡Eso es!", "¡Lo está haciendo muy bien!", "¡Perfecto!"];
+export const PRAISE = [
+  "¡Muy bien!",
+  "¡Eso es!",
+  "¡Qué bien lo hace!",
+  "¡Excelente, siga así!",
+  "¡Bravo!",
+  "¡Lo está logrando!",
+];
 
-export const FINISH = "¡Terminó todos los niveles! Excelente trabajo. Descanse un momento y tome agua.";
+export const LEVEL_DONE = [
+  "¡Lo logró! Me encanta cómo lo hizo. Tómese un respiro y, cuando quiera, seguimos.",
+  "¡Nivel completado! Estuvo muy bien. Descanse un poquito y seguimos cuando esté listo.",
+];
+
+export const FINISH =
+  "¡Terminó todos los niveles! Fue un gusto acompañarle. Ahora descanse, tome un poquito de agua, y nos vemos en la próxima.";
