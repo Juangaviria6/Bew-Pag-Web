@@ -212,3 +212,120 @@
   background: var(--cream);
   color: var(--wine);
 }
+
+/* ---------- Modo Emoción ---------- */
+.prueba__mood {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: clamp(14px, 2.4vw, 24px);
+  border-radius: 20px;
+  background: rgb(58 7 21 / 0.72);
+  backdrop-filter: blur(10px);
+  max-width: 520px;
+}
+
+.prueba__mood-label {
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--rose);
+  color: var(--wine-deep);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.prueba__mood-title {
+  margin: 0;
+  font-size: clamp(22px, 3.6vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  animation: page-rise-mood 0.5s var(--ease) both;
+}
+
+@keyframes page-rise-mood {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.prueba__mood-copy {
+  margin: 0;
+  font-size: 14px;
+  color: rgb(247 232 235 / 0.82);
+  max-width: 40ch;
+}
+
+.prueba__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.prueba__chip {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgb(247 232 235 / 0.4);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cream-text);
+}
+
+.prueba__chip[aria-pressed="true"] {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--wine);
+}
+
+.prueba__save {
+  margin-top: 4px;
+}
+
+.prueba__steps--below {
+  position: static;
+  margin-top: 14px;
+  max-width: none;
+}
+
+.prueba__stage.mood--enojo {
+  animation: mood-shake 0.35s linear infinite;
+}
+
+@keyframes mood-shake {
+  25% {
+    transform: translate(2px, -1px);
+  }
+  50% {
+    transform: translate(-2px, 1px);
+  }
+  75% {
+    transform: translate(1px, 2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prueba__stage.mood--enojo {
+    animation: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .prueba__mood {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .prueba__mood-copy {
+    font-size: 13px;
+  }
+}
