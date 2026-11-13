@@ -15,11 +15,17 @@ export interface FaceInput {
   /** 0..1 */
   mouth: number;
   smile: number;
+  /** Señales de expresión 0..1 (para el modo Emoción). */
+  frown: number;
+  browDown: number;
+  browUp: number;
+  eyeWide: number;
   visible: boolean;
 }
 
 export const EMPTY_FACE: FaceInput = {
-  x: 0.5, y: 0.35, mx: 0.5, my: 0.6, size: 0.4, yaw: 0, pitch: 0, roll: 0, mouth: 0, smile: 0, visible: false,
+  x: 0.5, y: 0.35, mx: 0.5, my: 0.6, size: 0.4, yaw: 0, pitch: 0, roll: 0, mouth: 0, smile: 0,
+  frown: 0, browDown: 0, browUp: 0, eyeWide: 0, visible: false,
 };
 
 export type Fit = (x: number, y: number) => [number, number];
@@ -61,7 +67,7 @@ export async function createFaceTracker(): Promise<FaceTracker> {
       const res = landmarker.detectForVideo(video, now);
       const f = res.faceLandmarks[0];
       if (!f) {
-        state = { ...state, visible: false, mouth: 0, smile: 0 };
+        state = { ...EMPTY_FACE, x: state.x, y: state.y };
         return state;
       }
       const left = f[234];
@@ -76,6 +82,10 @@ export async function createFaceTracker(): Promise<FaceTracker> {
       const score = (name: string) => cats.find((c) => c.categoryName === name)?.score ?? 0;
       const jaw = score("jawOpen");
       const smile = (score("mouthSmileLeft") + score("mouthSmileRight")) / 2;
+      const frown = (score("mouthFrownLeft") + score("mouthFrownRight")) / 2;
+      const browDown = (score("browDownLeft") + score("browDownRight")) / 2;
+      const browUp = score("browInnerUp");
+      const eyeWide = (score("eyeWideLeft") + score("eyeWideRight")) / 2;
 
       // Posiciones en pantalla (espejadas), corregidas por el recorte "cover" del video.
       const [cx, cy] = fit(1 - brow.x, brow.y - height * 0.28);
@@ -98,6 +108,10 @@ export async function createFaceTracker(): Promise<FaceTracker> {
         roll,
         mouth: clamp(jaw * 1.6),
         smile: clamp(smile * 1.8),
+        frown: clamp(frown * 2.5),
+        browDown: clamp(browDown * 1.6),
+        browUp: clamp(browUp * 1.4),
+        eyeWide: clamp(eyeWide * 1.8),
         visible: true,
       };
       return state;
