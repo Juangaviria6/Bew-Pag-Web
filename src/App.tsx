@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { Suspense, lazy, useCallback, useState } from "react";
 import { AnimatePresence } from "motion/react";
 import { Preloader } from "./components/layout/Preloader/Preloader";
 import { Navbar } from "./components/layout/Navbar/Navbar";
@@ -15,6 +15,7 @@ import { Plans } from "./sections/Plans/Plans";
 import { Extras } from "./sections/Extras/Extras";
 import { Contact } from "./sections/Contact/Contact";
 import { Nexa } from "./sections/Nexa/Nexa";
+const Prueba = lazy(() => import("./sections/Prueba/Prueba").then((m) => ({ default: m.Prueba })));
 import { marqueeWords, projectTypes } from "./data/content";
 import { useFinePointer, useReducedMotion } from "./hooks/useMediaQuery";
 import { scrollToHash, useSmoothScroll } from "./hooks/useSmoothScroll";
@@ -98,6 +99,12 @@ export default function App() {
         return <Plans onSelect={quotePlan} />;
       case "ia":
         return <Nexa onQuote={quoteAi} />;
+      case "prueba":
+        return (
+          <Suspense fallback={<div style={{ minHeight: "100svh" }} />}>
+            <Prueba />
+          </Suspense>
+        );
       case "contacto":
         return <Contact type={projectType} onTypeChange={setProjectType} />;
     }

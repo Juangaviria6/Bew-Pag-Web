@@ -1,4 +1,4 @@
-/** Páginas del sitio. El orden define el avance (01 / 07) y el menú. */
+/** Páginas del sitio. El orden define el avance (01 / 08) y el menú. */
 export const PAGES = [
   { id: "inicio", label: "Inicio" },
   { id: "servicios", label: "Servicios" },
@@ -6,6 +6,7 @@ export const PAGES = [
   { id: "proceso", label: "Proceso" },
   { id: "planes", label: "Planes" },
   { id: "ia", label: "Web + IA" },
+  { id: "prueba", label: "Pruébalo" },
   { id: "contacto", label: "Contacto" },
 ] as const;
 
@@ -20,6 +21,7 @@ const ANCHOR_PAGE: Record<string, PageId> = {
   planes: "planes",
   extras: "servicios",
   ia: "ia",
+  prueba: "prueba",
   contacto: "contacto",
 };
 
