@@ -188,3 +188,27 @@
     max-width: none;
   }
 }
+
+.prueba__tabs {
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgb(247 232 235 / 0.1);
+}
+
+.prueba__tab {
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--cream-text);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.prueba__tab[aria-pressed="true"] {
+  background: var(--cream);
+  color: var(--wine);
+}

@@ -19,7 +19,7 @@ export interface StarScene {
   dispose: () => void;
 }
 
-function starShape(outer: number, inner: number) {
+export function starShape(outer: number, inner: number) {
   const s = new THREE.Shape();
   const points = 4;
   for (let i = 0; i < points * 2; i++) {
