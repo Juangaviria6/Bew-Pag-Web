@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { HandTracker } from "../sections/Prueba/handTracker";
 import { createGame, type Game, type Settings } from "./engine";
-import { FINISH, LEVELS, PRAISE } from "./levels";
+import { FINISH, LEVEL_DONE, LEVELS, PRAISE } from "./levels";
 import { say, setVoice, stopVoice, voiceAvailable } from "./voice";
 import "./juego.css";
 
 type Screen = "inicio" | "jugando" | "pausa-nivel" | "fin";
 type Input = "camara" | "toque";
+type Facing = "user" | "environment";
 
 const DWELL = { "Rápido · 0,8 s": 800, "Normal · 1,5 s": 1500, "Lento · 2,5 s": 2500 };
 const SIZE = { Normal: 1, Grande: 1.35, "Muy grande": 1.7 };
@@ -36,7 +37,11 @@ export function Juego() {
   const [smooth, setSmooth] = useState(0.7);
   const [speed, setSpeed] = useState(0.8);
   const [voiceOn, setVoiceOn] = useState(true);
-  const [rate, setRate] = useState(0.9);
+  const [rate, setRate] = useState(0.95);
+  const [facing, setFacing] = useState<Facing>("user");
+  // El bucle de la cámara lee este valor sin recrearse.
+  const facingRef = useRef<Facing>("user");
+  const [switching, setSwitching] = useState(false);
 
   const settings = useRef<Settings>({ dwell: 1500, size: 1.35, smooth: 0.7, speed: 0.8 });
   useEffect(() => {
@@ -105,7 +110,7 @@ export function Juego() {
           speak(FINISH);
         } else {
           setScreen("pausa-nivel");
-          speak(`¡Nivel completado! Muy bien. Cuando esté listo, toque Siguiente nivel.`);
+          speak(LEVEL_DONE[Math.floor(Math.random() * LEVEL_DONE.length)]);
         }
       },
     });
@@ -117,14 +122,59 @@ export function Juego() {
     levelIndexRef.current = levelIndex;
   }, [levelIndex]);
 
+  /**
+   * Coordenadas del detector (vienen espejadas, como la cámara frontal) → pantalla.
+   * Con la cámara trasera no hay espejo, así que se deshace; y se compensa el recorte "cover".
+   */
   const fit = () => {
     const v = video.current;
     const s = stage.current;
-    if (!v || !s || !v.videoWidth) return (x: number, y: number) => [x, y] as [number, number];
+    const rear = facingRef.current === "environment";
+    if (!v || !s || !v.videoWidth) return (x: number, y: number): [number, number] => [rear ? 1 - x : x, y];
     const va = v.videoWidth / v.videoHeight;
     const sa = s.clientWidth / s.clientHeight;
-    return (x: number, y: number): [number, number] =>
-      va > sa ? [(x - 0.5) / (sa / va) + 0.5, y] : [x, (y - 0.5) / (va / sa) + 0.5];
+    return (mx: number, y: number): [number, number] => {
+      const x = rear ? 1 - mx : mx;
+      return va > sa ? [(x - 0.5) / (sa / va) + 0.5, y] : [x, (y - 0.5) / (va / sa) + 0.5];
+    };
+  };
+
+  /** Abre la cámara pedida. Si el equipo no tiene trasera, el navegador usa la que haya. */
+  const openStream = async (f: Facing) => {
+    stream.current?.getTracks().forEach((t) => t.stop());
+    stream.current = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: f }, width: { ideal: 640 }, height: { ideal: 480 } },
+      audio: false,
+    });
+    const track = stream.current.getVideoTracks()[0];
+    const actual = track?.getSettings().facingMode;
+    // Si el navegador informa cuál abrió, se usa esa (evita espejo equivocado).
+    const used: Facing = actual === "environment" ? "environment" : actual === "user" ? "user" : f;
+    facingRef.current = used;
+    setFacing(used);
+    const v = video.current!;
+    v.srcObject = stream.current;
+    await v.play();
+    return used;
+  };
+
+  const switchCamera = async () => {
+    if (switching) return;
+    setSwitching(true);
+    const next: Facing = facingRef.current === "user" ? "environment" : "user";
+    try {
+      const used = await openStream(next);
+      speak(used === "environment" ? "Listo, ahora uso la cámara de atrás." : "Listo, ahora uso la cámara de adelante.");
+    } catch {
+      speak("No pude cambiar de cámara. Sigo con la que estaba.");
+      try {
+        await openStream(facingRef.current);
+      } catch {
+        /* sin cámara: el juego sigue, el puntero queda quieto */
+      }
+    } finally {
+      setSwitching(false);
+    }
   };
 
   const begin = async (mode: Input) => {
@@ -135,13 +185,7 @@ export function Juego() {
       setLoading(true);
       try {
         if (!navigator.mediaDevices?.getUserMedia) throw new Error("sin cámara");
-        stream.current = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } },
-          audio: false,
-        });
-        const v = video.current!;
-        v.srcObject = stream.current;
-        await v.play();
+        await openStream(facing);
         const { createHandTracker } = await import("../sections/Prueba/handTracker");
         tracker.current = await createHandTracker();
       } catch {
@@ -153,7 +197,8 @@ export function Juego() {
       setLoading(false);
     }
     setScreen("jugando");
-    requestAnimationFrame(() => {
+    // El canvas está siempre montado: se arranca sin esperar un frame (que no llega si la pestaña está oculta).
+    setTimeout(() => {
       createEngine();
       if (mode === "camara") {
         const loop = (now: number) => {
@@ -171,15 +216,15 @@ export function Juego() {
       game.current?.start(LEVELS[0], mode === "toque");
       const text = mode === "toque" ? (LEVELS[0].introTouch ?? LEVELS[0].intro) : LEVELS[0].intro;
       speak(text);
-    });
+    }, 0);
   };
 
   const togglePause = useCallback(() => {
     setPaused((p) => {
       const next = !p;
       game.current?.pause(next);
-      if (next) speak("Pausa. Descanse lo que necesite.");
-      else speak("Seguimos.", true);
+      if (next) speak("Hagamos una pausa. Descanse todo lo que necesite, aquí le espero.");
+      else speak("¡Listo, seguimos!", true);
       return next;
     });
   }, [speak]);
@@ -264,6 +309,13 @@ export function Juego() {
               Velocidad del nivel "Seguir"
               <input type="range" min={0.4} max={1.4} step={0.1} value={speed} onChange={(e) => setSpeed(+e.target.value)} />
             </label>
+            <label>
+              Cámara
+              <select value={facing} onChange={(e) => setFacing(e.target.value as Facing)}>
+                <option value="user">Frontal (para verse a sí mismo)</option>
+                <option value="environment">Trasera (alguien sostiene el celular)</option>
+              </select>
+            </label>
             <label className="juego__check">
               <input type="checkbox" checked={voiceOn} onChange={(e) => setVoiceOn(e.target.checked)} disabled={!voiceAvailable()} />
               Voz guía {voiceAvailable() ? "" : "(no disponible en este navegador)"}
@@ -287,7 +339,7 @@ export function Juego() {
             <button type="button" className="juego__btn" onClick={() => begin("toque")} disabled={loading}>
               Jugar con el dedo o el mouse
             </button>
-            <button type="button" className="juego__btn juego__btn--ghost" onClick={() => say("Hola. Así suena la voz guía. Puede cambiar la velocidad en los ajustes.")}>
+            <button type="button" className="juego__btn juego__btn--ghost" onClick={() => say("¡Hola! Así sueno yo. Le voy a acompañar en cada paso. Si quiere, puede cambiar mi velocidad aquí arriba.")}>
               Probar la voz
             </button>
           </div>
@@ -297,7 +349,7 @@ export function Juego() {
 
       <div
         ref={stage}
-        className={`juego__stage ${screen === "inicio" ? "is-hidden" : ""} ${input === "camara" ? "has-video" : ""}`}
+        className={`juego__stage ${screen === "inicio" ? "is-hidden" : ""} ${input === "camara" ? "has-video" : ""} ${facing === "environment" ? "is-rear" : ""}`}
         onPointerDown={onPointer}
         onPointerMove={onPointer}
         onPointerUp={onPointer}
@@ -326,6 +378,11 @@ export function Juego() {
               <button type="button" className="juego__btn" onClick={() => speak(intro(levelIndex))}>
                 🔊 Repetir
               </button>
+              {input === "camara" && (
+                <button type="button" className="juego__btn" onClick={switchCamera} disabled={switching}>
+                  🔄 {switching ? "Cambiando…" : facing === "user" ? "Cámara trasera" : "Cámara frontal"}
+                </button>
+              )}
               <button type="button" className="juego__btn" onClick={togglePause} aria-pressed={paused}>
                 {paused ? "▶ Seguir" : "⏸ Pausa"}
               </button>
