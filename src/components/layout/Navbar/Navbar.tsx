@@ -1,53 +1,69 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from "motion/react";
-import { setScrollLocked } from "../../../hooks/useSmoothScroll";
-import { goToPage, useCurrentPage } from "../../../navigation/pageRouter";
-import { PAGES, hrefFor, type PageId } from "../../../navigation/pages";
+import { navLinks } from "../../../data/content";
+import { scrollToHash, setScrollLocked } from "../../../hooks/useSmoothScroll";
 import { Logo } from "../../ui/Logo/Logo";
 import { Magnetic } from "../../ui/Magnetic/Magnetic";
 import "./Navbar.css";
 
-/** Páginas que empiezan con una sección clara: el menú necesita fondo desde el inicio. */
-const LIGHT_TOP: PageId[] = ["servicios", "proceso", "planes"];
-
 export function Navbar() {
-  const page = useCurrentPage();
   const { scrollY, scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
-  const [scrolled, setScrolled] = useState(false);
-  const solid = scrolled || LIGHT_TOP.includes(page);
+  const [hidden, setHidden] = useState(false);
+  const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (y) => {
-    setScrolled(y > 40);
+    const prev = scrollY.getPrevious() ?? 0;
+    setHidden(y > prev && y > 240 && !open);
+    setSolid(y > 40);
   });
 
   useEffect(() => setScrollLocked(open), [open]);
 
-  const go = (id: PageId) => (e: React.MouseEvent) => {
+  // Sección visible → resalta su enlace (aria-current).
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    const ids = navLinks.map((l) => l.href.slice(1));
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
+  }, []);
+
+  const go = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     setOpen(false);
-    goToPage(id);
+    scrollToHash(href);
   };
 
   return (
     <>
       <motion.header
         className={`nav ${solid ? "is-solid" : ""} ${open ? "is-open" : ""}`}
+        animate={{ y: hidden ? "-120%" : "0%" }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="nav__inner">
-          <a href={hrefFor("inicio")} className="nav__logo" onClick={go("inicio")} aria-label="Ir al inicio">
+          <a href="#top" className="nav__logo" onClick={go("#top")} aria-label="Ir al inicio">
             <Logo />
           </a>
 
           <nav className="nav__links" aria-label="Principal">
-            {PAGES.filter((p) => p.id !== "inicio" && p.id !== "contacto").map((l, i) => (
+            {navLinks.map((l, i) => (
               <a
-                key={l.id}
-                href={hrefFor(l.id)}
-                onClick={go(l.id)}
+                key={l.href}
+                href={l.href}
+                onClick={go(l.href)}
                 className="nav__link"
-                aria-current={page === l.id ? "page" : undefined}
+                aria-current={active === l.href.slice(1) ? "location" : undefined}
               >
                 <span className="nav__idx">0{i + 1}</span>
                 <span className="nav__roll" data-text={l.label}>
@@ -59,12 +75,7 @@ export function Navbar() {
 
           <div className="nav__actions">
             <Magnetic>
-              <a
-                href={hrefFor("contacto")}
-                className="pill pill--solid nav__cta"
-                onClick={go("contacto")}
-                aria-current={page === "contacto" ? "page" : undefined}
-              >
+              <a href="#contacto" className="pill pill--solid nav__cta" onClick={go("#contacto")}>
                 Hablemos <span aria-hidden="true">→</span>
               </a>
             </Magnetic>
@@ -93,12 +104,12 @@ export function Navbar() {
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           >
             <nav className="menu__links">
-              {PAGES.map((l, i) => (
+              {[{ label: "Inicio", href: "#top" }, ...navLinks].map((l, i) => (
                 <motion.a
-                  key={l.id}
-                  href={hrefFor(l.id)}
-                  onClick={go(l.id)}
-                  aria-current={page === l.id ? "page" : undefined}
+                  key={l.href}
+                  href={l.href}
+                  aria-current={active === l.href.slice(1) ? "location" : undefined}
+                  onClick={go(l.href)}
                   initial={{ y: 60, opacity: 0 }}
                   animate={{ y: 0, opacity: 1, transition: { delay: 0.25 + i * 0.06 } }}
                 >

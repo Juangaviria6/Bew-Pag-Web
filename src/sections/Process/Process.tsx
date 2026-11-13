@@ -28,7 +28,7 @@ export function Process() {
           <div className="process__head">
             <div>
               <p className="section-kicker">
-                <span>06 / 08</span>
+                <span>04 / 06</span>
                 <span>— Proceso</span>
               </p>
               <h2 className="section-title">

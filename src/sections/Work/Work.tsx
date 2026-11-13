@@ -14,7 +14,7 @@ export function Work() {
         <div className="section-head">
           <div>
             <p className="section-kicker">
-              <span>03 / 08</span>
+              <span>02 / 06</span>
               <span>— Proyectos</span>
             </p>
             <SplitText
@@ -26,7 +26,9 @@ export function Work() {
             />
           </div>
           <p className="work__note mono">
-            {String(projects.length).padStart(2, "0")} piezas · pasa el cursor
+            {String(projects.length).padStart(2, "0")} piezas ·{" "}
+            <span className="work__hint-fine">pasa el cursor</span>
+            <span className="work__hint-touch">toca una pieza</span>
             <br />y haz clic para ampliar
           </p>
         </div>

@@ -119,7 +119,7 @@ export function Hero({ ready }: HeroProps) {
               <br />
               que convierten.
             </p>
-            <button type="button" className="hero__scroll mono" onClick={() => scrollToHash("#ecuacion")}>
+            <button type="button" className="hero__scroll mono" onClick={() => scrollToHash("#servicios")}>
               <span className="hero__scroll-line" />
               Scroll
             </button>

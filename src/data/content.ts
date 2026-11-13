@@ -77,14 +77,11 @@ export const services: Service[] = [
 
 export const projects: Project[] = [
   { src: post(1), alt: "Tu idea también puede ser una web", code: "# 01", title: "Tu idea también puede ser una web._", tag: "Campaña" },
-  { src: post(2), alt: "Código más diseño igual resultados", code: "# 02", title: "Código + Diseño = Resultados_", tag: "Branding" },
-  { src: post(3), alt: "Un buen diseño habla", code: "# 03", title: "Un buen diseño habla.", tag: "Pro tip" },
   { src: post(4), alt: "Landing page para tu proyecto", code: "# 04", title: "Desde la idea hasta el clic.", tag: "Landing" },
   { src: post(5), alt: "Ideas que se convierten en sitios web", code: "# 05", title: "Ideas que se convierten en sitios web.", tag: "Mobile" },
   { src: post(6), alt: "Pequeños cambios, grandes resultados", code: "# 06", title: "Pequeños cambios, grandes resultados.", tag: "UI" },
   { src: post(7), alt: "Tu marca también necesita un buen sitio web", code: "# 07", title: "Tu marca también necesita un buen sitio web.", tag: "Web" },
   { src: post(8), alt: "Landing pages que convierten", code: "# 08", title: "Landing pages que convierten_", tag: "Conversión" },
-  { src: post(9), alt: "Tu idea más nuestro código igual tu web", code: "# 09", title: "Tu idea + Nuestro código = Tu web", tag: "Código" },
 ];
 
 

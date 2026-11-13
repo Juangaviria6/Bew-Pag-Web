@@ -7,10 +7,8 @@ import { Cursor } from "./components/ui/Cursor/Cursor";
 import { CookieBanner } from "./components/ui/CookieBanner/CookieBanner";
 import { Marquee } from "./components/ui/Marquee/Marquee";
 import { Hero } from "./sections/Hero/Hero";
-import { Equation } from "./sections/Equation/Equation";
 import { Services } from "./sections/Services/Services";
 import { Work } from "./sections/Work/Work";
-import { ProTip } from "./sections/ProTip/ProTip";
 import { Features } from "./sections/Features/Features";
 import { Process } from "./sections/Process/Process";
 import { Plans } from "./sections/Plans/Plans";
@@ -22,8 +20,6 @@ import { useFinePointer, useReducedMotion } from "./hooks/useMediaQuery";
 import { scrollToHash, useSmoothScroll } from "./hooks/useSmoothScroll";
 import type { Plan, Service } from "./types";
 import { trackEvent } from "./lib/analytics";
-import { PagedSite } from "./navigation/PagedSite";
-import type { PageId } from "./navigation/pages";
 
 const SERVICE_TO_TYPE: Record<string, string> = {
   landing: "Landing page",
@@ -73,55 +69,28 @@ export default function App() {
     scrollToHash("#contacto");
   };
 
-  const renderPage = (id: PageId) => {
-    switch (id) {
-      case "inicio":
-        return (
-          <>
-            <Hero ready={!loading} />
-            <div className="marquee-band">
-              <Marquee items={marqueeWords} />
-            </div>
-            <Equation />
-          </>
-        );
-      case "servicios":
-        return (
-          <>
-            <Services onSelect={quote} />
-            <Features />
-          </>
-        );
-      case "proyectos":
-        return (
-          <>
-            <Work />
-            <ProTip />
-          </>
-        );
-      case "proceso":
-        return <Process />;
-      case "planes":
-        return (
-          <>
-            <Plans onSelect={quotePlan} />
-            <Extras onSelect={quoteExtra} onCustom={quoteCustom} />
-          </>
-        );
-      case "ia":
-        return <Nexa onQuote={quoteAi} />;
-      case "contacto":
-        return <Contact type={projectType} onTypeChange={setProjectType} />;
-    }
-  };
-
   return (
     <>
       <AnimatePresence>{loading && <Preloader onDone={finishLoading} />}</AnimatePresence>
       {finePointer && <Cursor />}
       <Navbar />
 
-      <PagedSite render={renderPage} footer={<Footer />} />
+      <main>
+        <Hero ready={!loading} />
+        <div className="marquee-band">
+          <Marquee items={marqueeWords} />
+        </div>
+        <Services onSelect={quote} />
+        <Work />
+        <Features />
+        <Process />
+        <Plans onSelect={quotePlan} />
+        <Extras onSelect={quoteExtra} onCustom={quoteCustom} />
+        <Nexa onQuote={quoteAi} />
+        <Contact type={projectType} onTypeChange={setProjectType} />
+      </main>
+
+      <Footer />
       <CookieBanner ready={!loading} />
     </>
   );

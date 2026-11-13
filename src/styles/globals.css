@@ -224,3 +224,10 @@ button {
   padding: clamp(28px, 4vw, 48px) 0;
   border-bottom: 1px solid rgb(28 15 19 / 0.1);
 }
+
+/* Acento legible sobre fondos oscuros / vino */
+.section--wine .accent,
+.plans .accent,
+.nexa .accent {
+  color: var(--rose);
+}

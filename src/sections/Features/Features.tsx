@@ -56,7 +56,7 @@ export function Features() {
       <div className="container features__grid">
         <div>
           <p className="section-kicker">
-            <span>05 / 08</span>
+            <span>03 / 06</span>
             <span>— Landing pages</span>
           </p>
           <SplitText
