@@ -11,7 +11,7 @@
   min-width: 0;
   overflow: hidden;
   border-radius: 20px;
-  background: var(--orange);
+  background: var(--wine);
   isolation: isolate;
   text-align: left;
 }
@@ -28,7 +28,7 @@
 .hx__shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 45%, rgb(27 20 16 / 0.72));
+  background: linear-gradient(180deg, transparent 45%, rgb(28 15 19 / 0.72));
   opacity: 0.25;
   transition: opacity 0.5s var(--ease);
 }
@@ -45,7 +45,7 @@
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--cream);
-  background: rgb(27 20 16 / 0.55);
+  background: rgb(28 15 19 / 0.55);
   backdrop-filter: blur(8px);
   padding: 4px 8px;
   border-radius: 999px;
@@ -78,7 +78,7 @@
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  border: 1px solid rgb(247 239 231 / 0.6);
+  border: 1px solid rgb(247 232 235 / 0.6);
   border-radius: 999px;
   padding: 4px 10px;
 }

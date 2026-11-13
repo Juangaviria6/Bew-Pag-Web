@@ -85,8 +85,8 @@ export function Nexa({ onQuote }: NexaProps) {
 
   // 1) El fondo se oscurece a medida que la sección entra en pantalla
   const { scrollYProgress: enter } = useScroll({ target: sectionRef, offset: ["start end", "start start"] });
-  const bg = useTransform(enter, [0.1, 0.9], ["#efe4d8", DARK]);
-  const fg = useTransform(enter, [0.1, 0.9], ["#1b1410", "#f3f2ff"]);
+  const bg = useTransform(enter, [0.1, 0.9], ["#EFD9DE", DARK]);
+  const fg = useTransform(enter, [0.1, 0.9], ["#1C0F13", "#f3f2ff"]);
 
   // 2) Escena fija: bew_ y Nexa se unen
   const { scrollYProgress: raw } = useScroll({ target: stageRef, offset: ["start start", "end end"] });

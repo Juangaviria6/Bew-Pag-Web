@@ -25,7 +25,7 @@ export function Hero({ ready }: HeroProps) {
   const py = useMotionValue(0.4);
   const spotX = useTransform(px, (v) => `${v * 100}%`);
   const spotY = useTransform(py, (v) => `${v * 100}%`);
-  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${spotX} ${spotY}, rgb(255 160 100 / 0.45), transparent 60%)`;
+  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${spotX} ${spotY}, rgb(163 33 80 / 0.45), transparent 60%)`;
   const shapeX = useSpring(useTransform(px, [0, 1], [-50, 50]), { stiffness: 80, damping: 18 });
   const shapeY = useSpring(useTransform(py, [0, 1], [-40, 40]), { stiffness: 80, damping: 18 });
   const tiltX = useSpring(useTransform(py, [0, 1], [18, -18]), { stiffness: 80, damping: 18 });
@@ -119,7 +119,7 @@ export function Hero({ ready }: HeroProps) {
               <br />
               que convierten.
             </p>
-            <button type="button" className="hero__scroll mono" onClick={() => scrollToHash("#ecuacion")}>
+            <button type="button" className="hero__scroll mono" onClick={() => scrollToHash("#servicios")}>
               <span className="hero__scroll-line" />
               Scroll
             </button>

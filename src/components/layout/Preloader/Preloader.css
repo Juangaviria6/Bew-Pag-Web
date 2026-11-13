@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: var(--orange);
+  background: var(--wine);
   color: var(--cream);
   display: flex;
   flex-direction: column;

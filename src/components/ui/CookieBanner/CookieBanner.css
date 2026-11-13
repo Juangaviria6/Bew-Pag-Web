@@ -10,7 +10,7 @@
   border-radius: 22px;
   background: var(--ink);
   color: var(--cream);
-  border: 1px solid rgb(247 239 231 / 0.12);
+  border: 1px solid rgb(247 232 235 / 0.12);
   box-shadow: 0 30px 70px -20px rgb(0 0 0 / 0.55);
 }
 
@@ -20,11 +20,11 @@
   gap: 8px;
   margin: 0 0 10px;
   font-size: 11px;
-  color: rgb(247 239 231 / 0.55);
+  color: rgb(247 232 235 / 0.55);
 }
 
 .cookies__kicker span {
-  color: var(--orange);
+  color: var(--rose);
   font-size: 9px;
 }
 
@@ -39,12 +39,12 @@
   margin: 0;
   font-size: 13px;
   line-height: 1.6;
-  color: rgb(247 239 231 / 0.75);
+  color: rgb(247 232 235 / 0.75);
 }
 
 .cookies__link {
   padding: 0;
-  color: var(--orange-soft);
+  color: var(--rose);
   text-decoration: underline;
   text-underline-offset: 2px;
   font: inherit;
@@ -61,13 +61,13 @@
   gap: 14px;
   align-items: center;
   padding: 14px 0;
-  border-bottom: 1px solid rgb(247 239 231 / 0.1);
+  border-bottom: 1px solid rgb(247 232 235 / 0.1);
   cursor: pointer;
 }
 
 .cookies__toggle:first-child {
   margin-top: 14px;
-  border-top: 1px solid rgb(247 239 231 / 0.1);
+  border-top: 1px solid rgb(247 232 235 / 0.1);
 }
 
 .cookies__toggle.is-locked {
@@ -88,7 +88,7 @@
 .cookies__toggle-text small {
   font-size: 12px;
   line-height: 1.45;
-  color: rgb(247 239 231 / 0.55);
+  color: rgb(247 232 235 / 0.55);
 }
 
 .cookies__toggle input {
@@ -103,7 +103,7 @@
   width: 42px;
   height: 24px;
   border-radius: 999px;
-  background: rgb(247 239 231 / 0.18);
+  background: rgb(247 232 235 / 0.18);
   transition: background 0.3s;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .cookies__toggle input:checked + .cookies__switch {
-  background: var(--orange);
+  background: var(--wine);
 }
 
 .cookies__toggle input:checked + .cookies__switch::after {
@@ -132,7 +132,7 @@
 }
 
 .cookies__toggle input:focus-visible + .cookies__switch {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--wine);
   outline-offset: 3px;
 }
 
@@ -147,7 +147,7 @@
   flex: 1 1 auto;
   padding: 11px 16px;
   border-radius: 999px;
-  border: 1.5px solid rgb(247 239 231 / 0.3);
+  border: 1.5px solid rgb(247 232 235 / 0.3);
   font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
@@ -159,14 +159,14 @@
 }
 
 .cookies__btn--primary {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--wine);
+  border-color: var(--wine);
 }
 
 .cookies__btn--primary:hover {
   background: var(--cream);
   border-color: var(--cream);
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .cookies__btn--ghost {

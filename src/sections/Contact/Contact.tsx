@@ -107,7 +107,7 @@ export function Contact({ type, onTypeChange: setType }: ContactProps) {
   };
 
   return (
-    <section id="contacto" className="section section--orange contact">
+    <section id="contacto" className="section section--wine contact">
       <div className="contact__glow" />
       <div className="container contact__grid">
         <div className="contact__eq">

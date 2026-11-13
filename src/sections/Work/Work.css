@@ -12,3 +12,17 @@
   line-height: 1.7;
   opacity: 0.85;
 }
+
+.work__hint-touch {
+  display: none;
+}
+
+@media (hover: none) {
+  .work__hint-fine {
+    display: none;
+  }
+
+  .work__hint-touch {
+    display: inline;
+  }
+}

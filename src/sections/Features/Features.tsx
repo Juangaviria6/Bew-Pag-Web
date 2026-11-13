@@ -52,11 +52,11 @@ export function Features() {
   };
 
   return (
-    <section className="section section--orange features">
+    <section className="section section--wine features">
       <div className="container features__grid">
         <div>
           <p className="section-kicker">
-            <span>05 / 08</span>
+            <span>01 / 06</span>
             <span>— Landing pages</span>
           </p>
           <SplitText

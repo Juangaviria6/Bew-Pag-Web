@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { Suspense, lazy, useCallback, useState } from "react";
 import { AnimatePresence } from "motion/react";
 import { Preloader } from "./components/layout/Preloader/Preloader";
 import { Navbar } from "./components/layout/Navbar/Navbar";
@@ -7,21 +7,22 @@ import { Cursor } from "./components/ui/Cursor/Cursor";
 import { CookieBanner } from "./components/ui/CookieBanner/CookieBanner";
 import { Marquee } from "./components/ui/Marquee/Marquee";
 import { Hero } from "./sections/Hero/Hero";
-import { Equation } from "./sections/Equation/Equation";
 import { Services } from "./sections/Services/Services";
 import { Work } from "./sections/Work/Work";
-import { ProTip } from "./sections/ProTip/ProTip";
 import { Features } from "./sections/Features/Features";
 import { Process } from "./sections/Process/Process";
 import { Plans } from "./sections/Plans/Plans";
 import { Extras } from "./sections/Extras/Extras";
 import { Contact } from "./sections/Contact/Contact";
 import { Nexa } from "./sections/Nexa/Nexa";
+const Prueba = lazy(() => import("./sections/Prueba/Prueba").then((m) => ({ default: m.Prueba })));
 import { marqueeWords, projectTypes } from "./data/content";
 import { useFinePointer, useReducedMotion } from "./hooks/useMediaQuery";
 import { scrollToHash, useSmoothScroll } from "./hooks/useSmoothScroll";
 import type { Plan, Service } from "./types";
 import { trackEvent } from "./lib/analytics";
+import { PagedSite } from "./navigation/PagedSite";
+import type { PageId } from "./navigation/pages";
 
 const SERVICE_TO_TYPE: Record<string, string> = {
   landing: "Landing page",
@@ -71,30 +72,51 @@ export default function App() {
     scrollToHash("#contacto");
   };
 
+  const renderPage = (id: PageId) => {
+    switch (id) {
+      case "inicio":
+        return (
+          <>
+            <Hero ready={!loading} />
+            <div className="marquee-band">
+              <Marquee items={marqueeWords} />
+            </div>
+            <Features />
+          </>
+        );
+      case "servicios":
+        return (
+          <>
+            <Services onSelect={quote} />
+            <Extras onSelect={quoteExtra} onCustom={quoteCustom} />
+          </>
+        );
+      case "proyectos":
+        return <Work />;
+      case "proceso":
+        return <Process />;
+      case "planes":
+        return <Plans onSelect={quotePlan} />;
+      case "ia":
+        return <Nexa onQuote={quoteAi} />;
+      case "prueba":
+        return (
+          <Suspense fallback={<div style={{ minHeight: "100svh" }} />}>
+            <Prueba />
+          </Suspense>
+        );
+      case "contacto":
+        return <Contact type={projectType} onTypeChange={setProjectType} />;
+    }
+  };
+
   return (
     <>
       <AnimatePresence>{loading && <Preloader onDone={finishLoading} />}</AnimatePresence>
       {finePointer && <Cursor />}
       <Navbar />
 
-      <main>
-        <Hero ready={!loading} />
-        <div className="marquee-band">
-          <Marquee items={marqueeWords} />
-        </div>
-        <Equation />
-        <Services onSelect={quote} />
-        <Work />
-        <ProTip />
-        <Features />
-        <Process />
-        <Plans onSelect={quotePlan} />
-        <Extras onSelect={quoteExtra} onCustom={quoteCustom} />
-        <Nexa onQuote={quoteAi} />
-        <Contact type={projectType} onTypeChange={setProjectType} />
-      </main>
-
-      <Footer />
+      <PagedSite render={renderPage} footer={<Footer />} />
       <CookieBanner ready={!loading} />
     </>
   );

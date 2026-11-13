@@ -26,9 +26,9 @@
 }
 
 .nav.is-solid .nav__inner {
-  background: rgb(247 239 231 / 0.78);
+  background: rgb(247 232 235 / 0.78);
   backdrop-filter: blur(16px) saturate(1.4);
-  box-shadow: 0 1px 0 rgb(27 20 16 / 0.06), 0 12px 40px -18px rgb(27 20 16 / 0.25);
+  box-shadow: 0 1px 0 rgb(28 15 19 / 0.06), 0 12px 40px -18px rgb(28 15 19 / 0.25);
 }
 
 .nav.is-open {
@@ -46,7 +46,7 @@
 }
 
 .nav.is-solid .nav__logo {
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .nav.is-open .nav__logo {
@@ -90,11 +90,11 @@
 
 .nav__roll::after {
   content: attr(data-text);
-  color: var(--orange-glow);
+  color: var(--rose);
 }
 
 .nav.is-solid .nav__roll::after {
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .nav__link:hover .nav__roll span,
@@ -115,7 +115,7 @@
 .nav:not(.is-solid) .nav__cta {
   background: var(--cream);
   border-color: var(--cream);
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .nav:not(.is-solid) .nav__cta:hover {
@@ -178,7 +178,7 @@
 }
 
 .nav.is-solid .nav__progress {
-  background: var(--orange);
+  background: var(--wine);
 }
 
 /* Menú móvil */
@@ -186,7 +186,7 @@
   position: fixed;
   inset: 0;
   z-index: 99;
-  background: var(--orange);
+  background: var(--wine);
   color: var(--cream);
   display: flex;
   flex-direction: column;
@@ -233,4 +233,13 @@
   .nav__cta {
     display: none;
   }
+}
+
+/* Página activa */
+.nav__link[aria-current="page"] .nav__roll span {
+  box-shadow: inset 0 -2px 0 currentColor;
+}
+
+.menu__links a[aria-current="page"] {
+  color: var(--rose);
 }

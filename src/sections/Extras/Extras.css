@@ -15,7 +15,7 @@
   margin-top: clamp(40px, 6vw, 80px);
   padding: clamp(28px, 4vw, 52px);
   border-radius: 28px;
-  background: var(--orange);
+  background: var(--wine);
   color: var(--cream);
 }
 

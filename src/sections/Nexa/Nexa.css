@@ -84,7 +84,7 @@
 .nexa__combo-glow {
   position: absolute;
   inset: -40% -20%;
-  background: radial-gradient(closest-side at 30% 50%, rgb(244 88 10 / 0.35), transparent),
+  background: radial-gradient(closest-side at 30% 50%, rgb(163 33 80 / 0.35), transparent),
     radial-gradient(closest-side at 72% 50%, rgb(110 80 255 / 0.4), transparent);
   filter: blur(30px);
   pointer-events: none;
@@ -93,7 +93,7 @@
 
 .nexa__bew {
   font-size: clamp(56px, 10vw, 150px);
-  color: var(--orange);
+  color: var(--wine-bright);
 }
 
 .nexa__plus {
@@ -357,7 +357,7 @@
 }
 
 .nexa__orange {
-  color: var(--orange);
+  color: var(--rose);
   font-weight: 700;
 }
 
@@ -546,14 +546,14 @@
     #8a2c0c 67%,
     #c0420a 80%,
     #e2500a 90%,
-    var(--orange) 100%
+    var(--wine) 100%
   );
 }
 
 .nexa__outro-glow {
   position: absolute;
   inset: 25% -25% 18% -25%;
-  background: radial-gradient(closest-side, rgb(255 140 70 / 0.55), rgb(244 88 10 / 0.25) 55%, transparent);
+  background: radial-gradient(closest-side, rgb(255 140 70 / 0.55), rgb(163 33 80 / 0.25) 55%, transparent);
   filter: blur(20px);
   pointer-events: none;
 }
