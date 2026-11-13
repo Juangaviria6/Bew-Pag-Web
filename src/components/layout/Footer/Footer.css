@@ -17,7 +17,7 @@
 }
 
 .footer__logo .logo__caret {
-  color: var(--orange);
+  color: var(--rose);
 }
 
 .footer__desc {
@@ -25,7 +25,7 @@
   max-width: 34ch;
   font-size: 14px;
   line-height: 1.7;
-  color: rgb(247 239 231 / 0.7);
+  color: rgb(247 232 235 / 0.7);
 }
 
 .footer__desc .accent {
@@ -35,13 +35,13 @@
 .footer__mail {
   font-size: 13px;
   color: var(--cream);
-  border-bottom: 1px solid var(--orange);
+  border-bottom: 1px solid var(--rose);
   padding-bottom: 2px;
   transition: color 0.3s;
 }
 
 .footer__mail:hover {
-  color: var(--orange);
+  color: var(--rose);
 }
 
 .footer__col {
@@ -51,7 +51,7 @@
 }
 
 .footer__label {
-  color: var(--orange);
+  color: var(--rose);
   margin: 6px 0 18px;
 }
 
@@ -67,7 +67,7 @@
 
 .footer__link:hover {
   opacity: 1;
-  color: var(--orange-soft);
+  color: var(--rose);
   transform: translateX(6px);
 }
 
@@ -78,7 +78,7 @@
   font-size: clamp(120px, 30vw, 420px);
   line-height: 0.85;
   letter-spacing: -0.06em;
-  color: var(--orange);
+  color: var(--wine-bright);
   user-select: none;
 }
 
@@ -94,9 +94,9 @@
   flex-wrap: wrap;
   margin-top: 28px;
   padding-top: 22px;
-  border-top: 1px solid rgb(247 239 231 / 0.12);
+  border-top: 1px solid rgb(247 232 235 / 0.12);
   font-size: 12px;
-  color: rgb(247 239 231 / 0.65);
+  color: rgb(247 232 235 / 0.65);
 }
 
 .footer__legal {
@@ -112,7 +112,7 @@
 }
 
 .footer__legal button:hover {
-  color: var(--orange-soft);
+  color: var(--rose);
 }
 
 .footer__top-btn span {

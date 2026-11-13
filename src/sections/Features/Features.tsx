@@ -52,7 +52,7 @@ export function Features() {
   };
 
   return (
-    <section className="section section--orange features">
+    <section className="section section--wine features">
       <div className="container features__grid">
         <div>
           <p className="section-kicker">

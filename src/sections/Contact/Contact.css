@@ -9,7 +9,7 @@
   right: -300px;
   top: -200px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(255 170 110 / 0.55), transparent 60%);
+  background: radial-gradient(circle, rgb(163 33 80 / 0.55), transparent 60%);
   filter: blur(40px);
   pointer-events: none;
   animation: glow 12s ease-in-out infinite alternate;
@@ -54,7 +54,7 @@
   text-overflow: ellipsis;
   background: transparent;
   border: 0;
-  border-bottom: 2px dashed rgb(247 239 231 / 0.6);
+  border-bottom: 2px dashed rgb(247 232 235 / 0.6);
   font-family: var(--font-mono);
   font-size: inherit;
   color: var(--cream);
@@ -64,7 +64,7 @@
 }
 
 .contact__idea input::placeholder {
-  color: rgb(247 239 231 / 0.55);
+  color: rgb(247 232 235 / 0.55);
 }
 
 .contact__idea input:focus {
@@ -95,7 +95,7 @@
   overflow: hidden;
   background: var(--cream);
   color: var(--ink);
-  box-shadow: 0 40px 80px -40px rgb(90 25 0 / 0.7);
+  box-shadow: 0 40px 80px -40px rgb(58 7 21 / 0.7);
   transform: rotate(-1.5deg);
   transition: transform 0.6s var(--ease);
 }
@@ -109,14 +109,14 @@
   align-items: center;
   gap: 6px;
   padding: 12px 16px;
-  border-bottom: 1px solid rgb(27 20 16 / 0.08);
+  border-bottom: 1px solid rgb(28 15 19 / 0.08);
 }
 
 .contact__bar > span {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgb(27 20 16 / 0.15);
+  background: rgb(28 15 19 / 0.15);
 }
 
 .contact__bar p {
@@ -148,7 +148,7 @@
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.04em;
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .contact__site-title {
@@ -163,21 +163,21 @@
 }
 
 .contact__site-dot {
-  color: var(--orange);
+  color: var(--wine);
   font-weight: 700;
 }
 
 .contact__site-sub {
   margin: 0;
   font-size: 11px;
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .contact__site-btn {
   margin-top: 6px;
   padding: 8px 16px;
   border-radius: 999px;
-  background: var(--orange);
+  background: var(--wine);
   color: var(--cream);
   font-size: 12px;
 }
@@ -207,7 +207,7 @@
   position: relative;
   padding: 9px 16px;
   border-radius: 999px;
-  border: 1.5px solid rgb(247 239 231 / 0.55);
+  border: 1.5px solid rgb(247 232 235 / 0.55);
   font-size: 13px;
   transition: border-color 0.3s;
 }
@@ -224,7 +224,7 @@
 .contact__chip.is-active {
   background: var(--cream);
   border-color: var(--cream);
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .contact__fields {
@@ -242,7 +242,7 @@
   width: 100%;
   background: transparent;
   border: 0;
-  border-bottom: 1.5px solid rgb(247 239 231 / 0.5);
+  border-bottom: 1.5px solid rgb(247 232 235 / 0.5);
   padding: 22px 0 8px;
   font-size: 16px;
   outline: none;
@@ -289,7 +289,7 @@
 
 .contact__submit:hover {
   background: var(--cream);
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .contact__submit:disabled {
@@ -327,7 +327,7 @@
 }
 
 .contact__done a {
-  color: var(--orange-soft);
+  color: var(--rose);
 }
 
 @media (max-width: 900px) {
@@ -358,7 +358,7 @@
   border-radius: 24px;
   background: var(--cream);
   color: var(--ink);
-  box-shadow: 0 30px 60px -35px rgb(90 25 0 / 0.65);
+  box-shadow: 0 30px 60px -35px rgb(58 7 21 / 0.65);
 }
 
 .contact__form .eyebrow {
@@ -376,7 +376,7 @@
 .contact__chip {
   padding: 7px 13px;
   font-size: 12px;
-  border-color: rgb(27 20 16 / 0.2);
+  border-color: rgb(28 15 19 / 0.2);
   color: var(--ink);
 }
 
@@ -385,8 +385,8 @@
 }
 
 .contact__chip.is-active {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--wine);
+  border-color: var(--wine);
   color: var(--cream);
 }
 
@@ -396,13 +396,13 @@
 
 .contact__field input {
   color: var(--ink);
-  border-bottom-color: rgb(27 20 16 / 0.25);
+  border-bottom-color: rgb(28 15 19 / 0.25);
   padding: 20px 0 7px;
   font-size: 15px;
 }
 
 .contact__field input:focus {
-  border-color: var(--orange);
+  border-color: var(--wine);
 }
 
 .contact__field input:user-invalid {
@@ -417,7 +417,7 @@
 
 .contact__field input:focus + span,
 .contact__field input:not(:placeholder-shown) + span {
-  color: var(--orange);
+  color: var(--wine);
 }
 
 /* Autorización de tratamiento de datos */
@@ -437,7 +437,7 @@
   width: 20px;
   height: 20px;
   margin: 1px 0 0;
-  border: 1.5px solid rgb(27 20 16 / 0.4);
+  border: 1.5px solid rgb(28 15 19 / 0.4);
   border-radius: 6px;
   display: grid;
   place-content: center;
@@ -458,8 +458,8 @@
 }
 
 .contact__consent input:checked {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--wine);
+  border-color: var(--wine);
 }
 
 .contact__consent input:checked::after {
@@ -467,7 +467,7 @@
 }
 
 .contact__consent input:focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--wine);
   outline-offset: 2px;
 }
 
@@ -478,7 +478,7 @@
 
 .contact__policy-link {
   padding: 0;
-  color: var(--orange);
+  color: var(--wine);
   text-decoration: underline;
   text-underline-offset: 2px;
   font: inherit;
@@ -497,7 +497,7 @@
 }
 
 .contact__submit:hover {
-  background: var(--orange);
+  background: var(--wine);
   color: var(--cream);
 }
 
@@ -514,7 +514,7 @@
   display: grid;
   place-items: center;
   padding: 20px;
-  background: rgb(27 20 16 / 0.7);
+  background: rgb(28 15 19 / 0.7);
   backdrop-filter: blur(6px);
 }
 
@@ -554,7 +554,7 @@
 }
 
 .privacy__dialog a {
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .privacy__meta {
@@ -569,7 +569,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgb(27 20 16 / 0.08);
+  background: rgb(28 15 19 / 0.08);
   color: var(--ink);
 }
 
@@ -600,7 +600,7 @@
 
 /* FAQ (dentro del modal) */
 .faq__item {
-  border-bottom: 1px solid rgb(27 20 16 / 0.12);
+  border-bottom: 1px solid rgb(28 15 19 / 0.12);
 }
 
 .faq__q {
@@ -617,7 +617,7 @@
 
 .faq__icon {
   font-size: 20px;
-  color: var(--orange);
+  color: var(--wine);
   transition: transform 0.3s var(--ease);
 }
 
@@ -655,7 +655,7 @@
 /* Tabla de cookies (modal) */
 .cookie-table {
   margin: 8px 0 12px;
-  border: 1px solid rgb(27 20 16 / 0.12);
+  border: 1px solid rgb(28 15 19 / 0.12);
   border-radius: 12px;
   overflow: hidden;
   font-size: 13px;
@@ -669,11 +669,11 @@
 }
 
 .cookie-table > div + div {
-  border-top: 1px solid rgb(27 20 16 / 0.12);
+  border-top: 1px solid rgb(28 15 19 / 0.12);
 }
 
 .cookie-table__head {
-  background: rgb(27 20 16 / 0.05);
+  background: rgb(28 15 19 / 0.05);
   font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;

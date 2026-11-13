@@ -29,7 +29,7 @@
   letter-spacing: inherit;
   line-height: inherit;
   font-weight: 400;
-  color: rgb(27 20 16 / 0.35);
+  color: rgb(28 15 19 / 0.35);
   transition: color 0.4s var(--ease);
 }
 
@@ -39,7 +39,7 @@
 }
 
 .eq__line:last-child .eq__word.is-active {
-  color: var(--orange);
+  color: var(--wine);
   font-weight: 600;
 }
 
@@ -49,7 +49,7 @@
   right: 0;
   bottom: 0.02em;
   height: 3px;
-  background: var(--orange);
+  background: var(--wine);
   transform-origin: left;
   border-radius: 2px;
 }
@@ -57,7 +57,7 @@
 .eq__desc {
   margin: 32px 0 36px;
   font-size: 13px;
-  color: var(--orange);
+  color: var(--wine);
   line-height: 1.7;
 }
 
@@ -84,7 +84,7 @@
 .eq__toggle-bg {
   position: absolute;
   inset: 0;
-  background: var(--orange);
+  background: var(--wine);
   border-radius: 999px;
 }
 
@@ -103,7 +103,7 @@
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 50px 100px -40px rgb(122 34 0 / 0.45), 0 0 0 1px rgb(27 20 16 / 0.06);
+  box-shadow: 0 50px 100px -40px rgb(58 7 21 / 0.45), 0 0 0 1px rgb(28 15 19 / 0.06);
   transition: background 0.6s var(--ease);
   aspect-ratio: 5 / 4.2;
 }
@@ -114,7 +114,7 @@
   gap: 6px;
   height: 46px;
   padding: 0 18px;
-  border-bottom: 1px solid rgb(27 20 16 / 0.08);
+  border-bottom: 1px solid rgb(28 15 19 / 0.08);
   background: rgb(255 255 255 / 0.85);
   position: relative;
   z-index: 3;
@@ -124,14 +124,14 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgb(27 20 16 / 0.15);
+  background: rgb(28 15 19 / 0.15);
 }
 
 .eq__bar p {
   margin: 0 auto;
   font-size: 11px;
   color: var(--muted);
-  background: rgb(27 20 16 / 0.05);
+  background: rgb(28 15 19 / 0.05);
   padding: 4px 16px;
   border-radius: 999px;
 }
@@ -219,14 +219,14 @@
 /* Estado: DISEÑO (wireframe) */
 .eq__mock--diseno .eq__page,
 .eq__mock--codigo .eq__page {
-  background: #faf6f2;
+  background: #FBF3F5;
   color: transparent;
 }
 
 .eq__mock--diseno .eq__b {
   color: transparent;
-  background: rgb(244 88 10 / 0.07);
-  outline: 1.5px dashed rgb(244 88 10 / 0.55);
+  background: rgb(163 33 80 / 0.07);
+  outline: 1.5px dashed rgb(163 33 80 / 0.55);
   outline-offset: 0;
   border-color: transparent;
 }
@@ -241,27 +241,27 @@
   line-height: 1;
   padding: 2px 5px;
   color: var(--cream);
-  background: var(--orange);
+  background: var(--wine);
   border-radius: 4px;
 }
 
 /* Estado: RESULTADOS (final) */
 .eq__mock--resultados .eq__page {
-  background: var(--orange);
+  background: var(--wine);
   color: var(--cream);
 }
 
 .eq__mock--resultados .eq__card {
-  background: rgb(247 239 231 / 0.14);
+  background: rgb(247 232 235 / 0.14);
 }
 
 .eq__mock--resultados .eq__card:first-child {
   background: var(--cream);
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .eq__mock--resultados .eq__h em {
-  color: var(--orange-glow);
+  color: var(--rose);
 }
 
 .eq__badge {
@@ -272,7 +272,7 @@
   color: var(--ink);
   font-size: 12px;
   font-weight: 500;
-  box-shadow: 0 20px 40px -12px rgb(27 20 16 / 0.35);
+  box-shadow: 0 20px 40px -12px rgb(28 15 19 / 0.35);
 }
 
 .eq__badge--1 {
@@ -292,7 +292,7 @@
   margin: 0;
   padding: 22px 20px;
   background: var(--ink);
-  color: #d8cdc4;
+  color: #E6D3D8;
   font-family: var(--font-mono);
   font-size: clamp(11px, 1.1vw, 14px);
   line-height: 1.75;
@@ -308,15 +308,15 @@
 .eq__ln {
   display: inline-block;
   width: 32px;
-  color: rgb(216 205 196 / 0.3);
+  color: rgb(230 211 216 / 0.3);
 }
 
 .tk-tag {
-  color: var(--orange-soft);
+  color: var(--rose);
 }
 
 .tk-attr {
-  color: #f3c9a8;
+  color: #F6C1CE;
 }
 
 .tk-value {

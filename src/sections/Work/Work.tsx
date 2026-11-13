@@ -9,7 +9,7 @@ export function Work() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="proyectos" className="section section--orange work">
+    <section id="proyectos" className="section section--wine work">
       <div className="container">
         <div className="section-head">
           <div>

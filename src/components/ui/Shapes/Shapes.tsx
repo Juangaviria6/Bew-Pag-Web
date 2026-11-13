@@ -11,10 +11,10 @@ export function PlayShape({ className }: ShapeProps) {
     <svg className={className} viewBox="0 0 240 260" fill="none" aria-hidden="true">
       <defs>
         <linearGradient id={`${id}-body`} x1="30" y1="20" x2="210" y2="240" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#ffb384" />
-          <stop offset="0.35" stopColor="#ff7a2e" />
-          <stop offset="0.75" stopColor="#e84a00" />
-          <stop offset="1" stopColor="#b83500" />
+          <stop offset="0" stopColor="#F6C1CE" />
+          <stop offset="0.35" stopColor="#A32150" />
+          <stop offset="0.75" stopColor="#731127" />
+          <stop offset="1" stopColor="#4A0A1B" />
         </linearGradient>
         <radialGradient id={`${id}-shine`} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(78 70) rotate(40) scale(90 50)">
           <stop stopColor="#fff" stopOpacity="0.85" />
@@ -43,10 +43,10 @@ export function StarShape({ className }: ShapeProps) {
     <svg className={className} viewBox="0 0 240 240" fill="none" aria-hidden="true">
       <defs>
         <radialGradient id={`${id}-body`} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 90) rotate(50) scale(170)">
-          <stop stopColor="#ffc09a" />
-          <stop offset="0.3" stopColor="#ff7a2e" />
-          <stop offset="0.8" stopColor="#e24800" />
-          <stop offset="1" stopColor="#a93000" />
+          <stop stopColor="#F6C1CE" />
+          <stop offset="0.3" stopColor="#A32150" />
+          <stop offset="0.8" stopColor="#731127" />
+          <stop offset="1" stopColor="#4A0A1B" />
         </radialGradient>
         <radialGradient id={`${id}-shine`} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(96 84) scale(46 30)">
           <stop stopColor="#fff" stopOpacity="0.9" />

@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 500;
-  background: rgb(27 20 16 / 0.88);
+  background: rgb(28 15 19 / 0.88);
   backdrop-filter: blur(10px);
   display: grid;
   place-items: center;
@@ -42,7 +42,7 @@
 
 .lb__figure figcaption .mono {
   font-size: 12px;
-  color: var(--orange-soft);
+  color: var(--rose);
 }
 
 .lb__figure strong {
@@ -62,14 +62,14 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1.5px solid rgb(247 239 231 / 0.4);
+  border: 1.5px solid rgb(247 232 235 / 0.4);
   font-size: 18px;
   transition: background 0.3s, border-color 0.3s;
 }
 
 .lb__controls button:hover {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--wine);
+  border-color: var(--wine);
 }
 
 .lb__controls .mono {

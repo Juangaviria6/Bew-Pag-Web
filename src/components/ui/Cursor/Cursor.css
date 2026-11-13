@@ -13,8 +13,8 @@
   width: 24px;
   height: 38px;
   transform-origin: 0 0;
-  color: var(--orange);
-  filter: drop-shadow(0 2px 2px rgb(27 20 16 / 0.25));
+  color: var(--wine);
+  filter: drop-shadow(0 2px 2px rgb(28 15 19 / 0.25));
   transition: color 0.35s, filter 0.35s;
 }
 
@@ -31,7 +31,7 @@
 
 /* Tema bew_: contorno naranja, relleno crema */
 .cursor__arrow--bew .px-o {
-  fill: var(--orange);
+  fill: var(--wine);
 }
 
 .cursor__arrow--bew .px-f {
@@ -84,7 +84,7 @@
   font-size: 11px;
   letter-spacing: 0.04em;
   white-space: nowrap;
-  box-shadow: 0 8px 24px rgb(27 20 16 / 0.25);
+  box-shadow: 0 8px 24px rgb(28 15 19 / 0.25);
   transform-origin: 0 0;
   transition: background 0.35s, box-shadow 0.35s;
 }

@@ -6,7 +6,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid rgb(27 20 16 / 0.15);
+  border-top: 1px solid rgb(28 15 19 / 0.15);
 }
 
 .irl__row {
@@ -17,7 +17,7 @@
   gap: 24px;
   width: 100%;
   padding: clamp(22px, 3vw, 36px) 4px;
-  border-bottom: 1px solid rgb(27 20 16 / 0.15);
+  border-bottom: 1px solid rgb(28 15 19 / 0.15);
   text-align: left;
   transition: opacity 0.4s var(--ease);
 }
@@ -34,7 +34,7 @@
 }
 
 .irl__row.is-active .irl__num {
-  color: var(--orange);
+  color: var(--wine);
 }
 
 /* Título con efecto "roll" vertical */
@@ -55,7 +55,7 @@
 }
 
 .irl__title-inner--ghost {
-  color: var(--orange);
+  color: var(--wine);
   font-weight: 600;
 }
 
@@ -88,8 +88,8 @@
 }
 
 .irl__row.is-active .irl__arrow {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--wine);
+  border-color: var(--wine);
   color: var(--cream);
   transform: rotate(-45deg);
 }
@@ -100,7 +100,7 @@
   bottom: -1px;
   height: 2px;
   width: 100%;
-  background: var(--orange);
+  background: var(--wine);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.7s var(--ease);
@@ -133,7 +133,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 18px;
-  box-shadow: 0 30px 60px -20px rgb(122 34 0 / 0.5);
+  box-shadow: 0 30px 60px -20px rgb(58 7 21 / 0.5);
 }
 
 /* Táctil / móvil: miniatura en la fila en vez de imagen flotante */

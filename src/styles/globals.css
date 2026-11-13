@@ -1,16 +1,18 @@
 :root {
-  --orange: #f4580a;
-  --orange-deep: #e14a00;
-  --orange-soft: #ff8a4c;
-  --orange-glow: #ffb17f;
-  --cream: #f7efe7;
-  --cream-2: #efe4d8;
-  --ink: #1b1410;
-  --ink-2: #2a201b;
-  --muted: #8a7466;
+  --wine: #731127;
+  --wine-deep: #4a0a1b;
+  --wine-bright: #a32150;
+  --wine-shadow: #3a0715;
+  --rose: #f6c1ce;
+  --cream: #f7e8eb;
+  --cream-2: #efd9de;
+  --cream-text: #fcf1f3;
+  --ink: #1c0f13;
+  --ink-2: #2a171c;
+  --muted: #745a61;
 
-  --font-sans: "Sora", system-ui, sans-serif;
-  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --gutter: clamp(16px, 4vw, 56px);
   --max: 1360px;
@@ -69,12 +71,12 @@ button {
 }
 
 ::selection {
-  background: var(--orange);
+  background: var(--wine);
   color: var(--cream);
 }
 
 :focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--wine);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -106,7 +108,7 @@ button {
 }
 
 .accent {
-  color: var(--orange);
+  color: var(--wine);
   font-weight: 600;
 }
 
@@ -125,8 +127,8 @@ button {
   padding: clamp(80px, 12vw, 160px) 0;
 }
 
-.section--orange {
-  background: var(--orange);
+.section--wine {
+  background: var(--wine);
   color: var(--cream);
 }
 
@@ -153,11 +155,11 @@ button {
   gap: 10px;
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--orange);
+  color: var(--wine);
   margin-bottom: 18px;
 }
 
-.section--orange .section-kicker {
+.section--wine .section-kicker {
   color: var(--cream);
 }
 
@@ -180,21 +182,21 @@ button {
 }
 
 .pill--solid:hover {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--wine);
+  border-color: var(--wine);
 }
 
 .pill--cream:hover {
   background: var(--cream);
-  color: var(--orange);
+  color: var(--wine);
 }
 
-.pill--orange {
-  color: var(--orange);
+.pill--wine {
+  color: var(--wine);
 }
 
-.pill--orange:hover {
-  background: var(--orange);
+.pill--wine:hover {
+  background: var(--wine);
   color: var(--cream);
 }
 
@@ -220,5 +222,5 @@ button {
 /* Cinta de texto bajo el hero */
 .marquee-band {
   padding: clamp(28px, 4vw, 48px) 0;
-  border-bottom: 1px solid rgb(27 20 16 / 0.1);
+  border-bottom: 1px solid rgb(28 15 19 / 0.1);
 }

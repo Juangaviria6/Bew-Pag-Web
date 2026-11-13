@@ -27,7 +27,7 @@ function Panel({
   // Foco de luz que sigue al cursor dentro del panel
   const mx = useMotionValue(50);
   const my = useMotionValue(50);
-  const spot = useMotionTemplate`radial-gradient(420px circle at ${mx}% ${my}%, rgb(244 88 10 / 0.28), transparent 60%)`;
+  const spot = useMotionTemplate`radial-gradient(420px circle at ${mx}% ${my}%, rgb(163 33 80 / 0.28), transparent 60%)`;
 
   return (
     <motion.article

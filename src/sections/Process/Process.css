@@ -26,7 +26,7 @@
   align-items: center;
   gap: 14px;
   padding: 16px 20px 16px 22px;
-  border: 1.5px solid var(--orange);
+  border: 1.5px solid var(--wine);
   border-radius: 999px;
   font-size: 15px;
   font-weight: 500;
@@ -37,30 +37,30 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--orange);
-  box-shadow: 0 0 0 0 rgb(244 88 10 / 0.6);
+  background: var(--wine);
+  box-shadow: 0 0 0 0 rgb(163 33 80 / 0.6);
   animation: pulse 1.8s infinite;
   transition: background 0.3s;
 }
 
 @keyframes pulse {
   70% {
-    box-shadow: 0 0 0 12px rgb(244 88 10 / 0);
+    box-shadow: 0 0 0 12px rgb(163 33 80 / 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgb(244 88 10 / 0);
+    box-shadow: 0 0 0 0 rgb(163 33 80 / 0);
   }
 }
 
 .process__pill-arrow {
-  color: var(--orange);
+  color: var(--wine);
   font-size: 18px;
   margin-left: 18px;
   transition: transform 0.4s var(--ease), color 0.3s;
 }
 
 .process__pill:hover {
-  background: var(--orange);
+  background: var(--wine);
   color: var(--cream);
 }
 
@@ -91,13 +91,13 @@
 }
 
 .process__track {
-  stroke: rgb(27 20 16 / 0.1);
+  stroke: rgb(28 15 19 / 0.1);
   stroke-width: 1.5;
   stroke-dasharray: 4 6;
 }
 
 .process__line {
-  stroke: var(--orange);
+  stroke: var(--wine);
   stroke-width: 2.5;
   stroke-linecap: round;
 }
@@ -105,7 +105,7 @@
 .process__meter {
   position: relative;
   height: 2px;
-  background: rgb(27 20 16 / 0.1);
+  background: rgb(28 15 19 / 0.1);
   margin-top: 18px;
 }
 
@@ -123,7 +123,7 @@
   height: 12px;
   margin: -6px 0 0 -6px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--wine);
 }
 
 .process__pct {
@@ -131,7 +131,7 @@
   right: 0;
   top: 0;
   font-size: 12px;
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .process__steps {
@@ -156,7 +156,7 @@
 
 .process__num {
   font-size: 12px;
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .process__step h3 {
@@ -178,7 +178,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: clamp(24px, 4vh, 48px);
-  color: var(--orange);
+  color: var(--wine);
 }
 
 .process__icon {
@@ -187,7 +187,7 @@
 
 .process__tag {
   font-size: 12px;
-  border: 1.5px solid var(--orange);
+  border: 1.5px solid var(--wine);
   border-radius: 999px;
   padding: 4px 12px;
 }

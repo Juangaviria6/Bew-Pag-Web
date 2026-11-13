@@ -223,7 +223,7 @@ export function CookiePolicyModal({ onClose }: { onClose: () => void }) {
         bloquear cookies desde la configuración de tu navegador (Chrome, Safari, Firefox, Edge). Bloquear las
         necesarias puede afectar el funcionamiento del sitio.
       </p>
-      <button type="button" className="pill pill--orange cookie-manage" onClick={manage}>
+      <button type="button" className="pill pill--wine cookie-manage" onClick={manage}>
         Cambiar mis preferencias
       </button>
 

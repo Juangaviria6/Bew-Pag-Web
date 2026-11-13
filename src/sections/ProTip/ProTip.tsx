@@ -55,7 +55,7 @@ export function ProTip() {
             <span>04 / 08</span>
             <span>— Pro tip</span>
           </p>
-          <span className="pill pill--orange protip__pill">
+          <span className="pill pill--wine protip__pill">
             Pro tip<span className="blink">_</span>
           </span>
           <p ref={quoteRef} className="protip__quote">
