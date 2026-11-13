@@ -236,10 +236,10 @@
 }
 
 /* Página activa */
-.nav__link[aria-current="location"] .nav__roll span {
+.nav__link[aria-current="page"] .nav__roll span {
   box-shadow: inset 0 -2px 0 currentColor;
 }
 
-.menu__links a[aria-current="location"] {
+.menu__links a[aria-current="page"] {
   color: var(--rose);
 }

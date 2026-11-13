@@ -15,7 +15,7 @@ export function Services({ onSelect }: ServicesProps) {
         <div className="section-head">
           <div>
             <p className="section-kicker">
-              <span>01 / 06</span>
+              <span>02 / 06</span>
               <span>— Servicios</span>
             </p>
             <SplitText

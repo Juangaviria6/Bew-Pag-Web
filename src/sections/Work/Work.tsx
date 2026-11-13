@@ -14,7 +14,7 @@ export function Work() {
         <div className="section-head">
           <div>
             <p className="section-kicker">
-              <span>02 / 06</span>
+              <span>04 / 06</span>
               <span>— Proyectos</span>
             </p>
             <SplitText

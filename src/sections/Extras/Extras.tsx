@@ -18,7 +18,7 @@ export function Extras({ onSelect, onCustom }: ExtrasProps) {
         <div className="section-head">
           <div>
             <p className="section-kicker">
-              <span>06 / 06</span>
+              <span>03 / 06</span>
               <span>— Servicios adicionales</span>
             </p>
             <SplitText

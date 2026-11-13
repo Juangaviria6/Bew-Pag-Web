@@ -114,7 +114,7 @@ export function Plans({ onSelect }: PlansProps) {
         <div className="section-head">
           <div>
             <p className="section-kicker">
-              <span>05 / 06</span>
+              <span>06 / 06</span>
               <span>— Planes</span>
             </p>
             <SplitText

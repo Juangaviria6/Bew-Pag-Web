@@ -20,6 +20,8 @@ import { useFinePointer, useReducedMotion } from "./hooks/useMediaQuery";
 import { scrollToHash, useSmoothScroll } from "./hooks/useSmoothScroll";
 import type { Plan, Service } from "./types";
 import { trackEvent } from "./lib/analytics";
+import { PagedSite } from "./navigation/PagedSite";
+import type { PageId } from "./navigation/pages";
 
 const SERVICE_TO_TYPE: Record<string, string> = {
   landing: "Landing page",
@@ -69,28 +71,45 @@ export default function App() {
     scrollToHash("#contacto");
   };
 
+  const renderPage = (id: PageId) => {
+    switch (id) {
+      case "inicio":
+        return (
+          <>
+            <Hero ready={!loading} />
+            <div className="marquee-band">
+              <Marquee items={marqueeWords} />
+            </div>
+            <Features />
+          </>
+        );
+      case "servicios":
+        return (
+          <>
+            <Services onSelect={quote} />
+            <Extras onSelect={quoteExtra} onCustom={quoteCustom} />
+          </>
+        );
+      case "proyectos":
+        return <Work />;
+      case "proceso":
+        return <Process />;
+      case "planes":
+        return <Plans onSelect={quotePlan} />;
+      case "ia":
+        return <Nexa onQuote={quoteAi} />;
+      case "contacto":
+        return <Contact type={projectType} onTypeChange={setProjectType} />;
+    }
+  };
+
   return (
     <>
       <AnimatePresence>{loading && <Preloader onDone={finishLoading} />}</AnimatePresence>
       {finePointer && <Cursor />}
       <Navbar />
 
-      <main>
-        <Hero ready={!loading} />
-        <div className="marquee-band">
-          <Marquee items={marqueeWords} />
-        </div>
-        <Services onSelect={quote} />
-        <Work />
-        <Features />
-        <Process />
-        <Plans onSelect={quotePlan} />
-        <Extras onSelect={quoteExtra} onCustom={quoteCustom} />
-        <Nexa onQuote={quoteAi} />
-        <Contact type={projectType} onTypeChange={setProjectType} />
-      </main>
-
-      <Footer />
+      <PagedSite render={renderPage} footer={<Footer />} />
       <CookieBanner ready={!loading} />
     </>
   );
